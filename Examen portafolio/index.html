@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: "montserrat",sans-serif;
+        background-color: rgb(75, 21, 125);
+        color: beige;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .portada{
+        width: 90%;
+        max-width: 1200px;
+        margin:auto;
+    }
+
+    .linea{
+        width: 100%;
+        height: 3px;
+        margin: 20px 0;
+        background-color: beige;
+    }
+
+    .portada{
+        padding: 90px 20px;
+    }
+    .portada h1{
+        text-align: center;
+        font-size: 6rem;
+        line-height: 1;
+        font-weight: 800;
+    }
+
+    .portada h2{
+        text-align: center;
+    }
+
+    .portada .top-text{
+       text-align: right;
+       font-size: 1.2rem;
+       margin-bottom: 20px;
+    }
+
+    .portada .bottom-text{
+        text-align: left;
+        margin-top: 80px;
+        font-size: 1.2rem;
+    }
+
+    .perfil{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        align-items: stretch;
+        padding: 60px 0;
+    }
+
+    .foto {
+        width: 100%;
+        border-radius: 20px;
+        max-width: 100px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+
+    .perfil p{
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .triple{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+        padding: 60px 0;
+    }
+
+    .col{
+        border-left: 2px solid white;
+        padding-left: 20px;
+    }
+
+    .col:first-child{
+        border-left: none;
+        padding-left: 30px;
+    }
+
+    .col h2{
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .software-item{
+        margin: 15px 0;
+    }
+
+    .dots{
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+    }
+
+    .dot{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    .dot.fill{
+        background-color: white;
+    }
+
+    @media (max-width: 800px){
+        .perfil {
+            grid-template-columns: 1fr;
+        }
+        .triple {
+            grid-template-columns: 1fr;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+        }
+        .contenidos{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .contenidos{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 80px 0;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .contenidos h1{
+        font-size: 7rem;
+        margin: 0;
+        font-weight: 800;
+        text-shadow: 0px 4px 8px rgba(0, 0,0 , 0.25);
+    }
+
+    .contenidos p{
+        margin-top: 15px;
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 900px){
+        .contenidos {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px){
+        .contenidos{
+            grid-template-columns: 1fr;
+        }
+        .contenidos .item h1{
+            font-size: 5rem;
+        }
+    }
+    
+    .maark-section {
+        padding: 60px 70px;
+        color: beige;
+    }
+
+    .maark-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .maark-imagen {
+        display: flex;
+        flex-direction: column;
+        gap: 2rpx;
+    }
+
+    .maark-imagen img {
+        width: 350px;
+        height: auto;
+        border-radius: 6px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vertical-img {
+        width: 280px;
+    }
+
+    .maark-imagen img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0,0 , 0.25);
+    }
+
+    .maark-texto h2 {
+        font-size: 75px;
+        margin-bottom: 0;
+    }
+    
+    .maark-texto h3 {
+        font-size: 32px;
+        margin-top: -5px;
+        margin-bottom: 25px;
+    }
+
+    .maark-texto p {
+        max-width: 470px;
+        line-height: 1.6;
+        font-size: 19px;
+        margin-bottom: 35px;
+    }
+
+    .maark-icono span {
+        border: 2px solid beige;
+        padding: 8px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        margin-right: 10px;
+        transition: 0.3 ease;
+        display: inline-block;
+    }
+
+    .maark-icono span:hover {
+        transform: translateY(-4px) scale(1.06);
+        box-shadow: 0 0 14px rgba(255,  255, 255, 0.5);
+    }
+
+    @media (max-width:900px) {
+        .maark-container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .maark-imagen {
+            width: 300px;
+        }
+
+        .maark-texto h2 {
+            width: 220px;
+        }
+    }
+
+    .chisme {
+        padding: 60px 70px;
+        color: beige;
+    }
+
+    .chisme-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .chisme-imagen {
+        display: flex;
+        flex-direction: column;
+        gap: 2rpx;
+    }
+
+    .chisme-imagen img {
+        width: 350px;
+        height: auto;
+        border-radius: 6px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vertical-img {
+        width: 280px;
+    }
+
+    .chisme-imagen img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0,0 , 0.25);
+    }
+
+    .chisme-texto h2 {
+        font-size: 75px;
+        margin-bottom: 0;
+    }
+    
+    .chisme-texto h3 {
+        font-size: 32px;
+        margin-top: -5px;
+        margin-bottom: 25px;
+    }
+
+    .chisme-texto p {
+        max-width: 470px;
+        line-height: 1.6;
+        font-size: 19px;
+        margin-bottom: 35px;
+    }
+
+    .chisme-icono span {
+        border: 2px solid beige;
+        padding: 8px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        margin-right: 10px;
+        transition: 0.3 ease;
+        display: inline-block;
+    }
+
+    .chisme-icono span:hover {
+        transform: translateY(-4px) scale(1.06);
+        box-shadow: 0 0 14px rgba(255,  255, 255, 0.5);
+    }
+
+    @media (max-width:900px) {
+        .chisme-container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .chisme-imagen {
+            width: 300px;
+        }
+
+        .chisme-texto h2 {
+            width: 220px;
+        }
+    }
+
+    .cuento {
+        padding: 60px 70px;
+        color: beige;
+    }
+
+    .cuento-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .cuento-imagen {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .cuento-imagen img {
+        width: 350px;
+        height: auto;
+        border-radius: 6px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vertical-img {
+        width: 280px;
+    }
+
+    .cuento-imagen img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0,0 , 0.25);
+    }
+
+    .cuento-texto h2 {
+        font-size: 75px;
+        margin-bottom: 0;
+    }
+    
+    .cuento-texto h3 {
+        font-size: 32px;
+        margin-top: -5px;
+        margin-bottom: 25px;
+    }
+
+    .cuento-texto p {
+        max-width: 470px;
+        line-height: 1.6;
+        font-size: 19px;
+        margin-bottom: 35px;
+    }
+
+    .cuento-icono span {
+        border: 2px solid beige;
+        padding: 8px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        margin-right: 10px;
+        transition: 0.3 ease;
+        display: inline-block;
+    }
+
+    .cuento-icono span:hover {
+        transform: translateY(-4px) scale(1.06);
+        box-shadow: 0 0 14px rgba(255,  255, 255, 0.5);
+    }
+
+    @media (max-width:900px) {
+        .cuento-container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .cuento-imagen {
+            width: 300px;
+        }
+
+        .cuento-texto h2 {
+            width: 220px;
+        }
+    }
+
+    .dream {
+        padding: 70 0;
+        color:beige;
+    }
+
+    .dream-container {
+        width: 90%;
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .dream-imagenes{
+        display:flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .dream-imagenes img {
+        border-radius: 10px;
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        transition: transform .3s ease, box-shadow .3s esase;
+    }
+
+    .img-grande {
+       width:430px;
+    }
+
+    .img-fila {
+        display: flex;
+        gap: 25px;
+    }
+
+    .img-fila img {
+        width: 140px;
+        transition: transform .3s ease;
+    }
+
+    .dream-imagenes img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0,0 , 0.25);
+    }
+
+    .dream-texto h2 {
+        font-size: 60px;
+        margin: 0;
+    }
+
+    .dream-texto h3 {
+        font-size: 30px;
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+
+    .dream-texto p {
+        font-size: 20px;
+        max-height: 420px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .dream-icono {
+    border: 2px solid beige;
+    padding: 8px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    transition: .3s ease;
+}
+
+.dream-icono:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 14px rgba(255,255,255,0.5);
+}
+
+@media(max-width:1000px) {
+    .dream-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .dream-texto p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .img-grande { width: 320px; }
+    .img-fila img { width: 110px; }
+}  
+
+@media (max-width:600px) {
+    .img-grande { width:260px;}
+    .img-fila { width: 80px;}
+    .dream-texto h2 { font-size: 40px;}
+    .dream-texto h3 { font-size: 22px;}
+}
+
+.billetes {
+    width: 140px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+    .hara {
+        padding: 60px 70px;
+        color: beige;
+    }
+
+    .hara-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .hara-imagen {
+        display: flex;
+        flex-direction: column;
+        gap: 2rpx;
+        width: 350px;
+        height: auto;
+        border-radius: 6px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .hara-imagen img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0,0 , 0.25);
+    }
+
+    .hara-texto h2 {
+        font-size: 75px;
+        margin-bottom: 0;
+    }
+    
+    .hara-texto h3 {
+        font-size: 32px;
+        margin-top: -5px;
+        margin-bottom: 25px;
+    }
+
+    .hara-texto p {
+        max-width: 470px;
+        line-height: 1.6;
+        font-size: 19px;
+        margin-bottom: 35px;
+    }
+
+    .hara-icono span {
+        border: 2px solid beige;
+        padding: 8px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        margin-right: 10px;
+        transition: 0.3 ease;
+        display: inline-block;
+    }
+
+    .hara-icono span:hover {
+        transform: translateY(-4px) scale(1.06);
+        box-shadow: 0 0 14px rgba(255,  255, 255, 0.5);
+    }
+
+    @media (max-width:900px) {
+        .hara-container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .hara-imagen {
+            width: 300px;
+        }
+
+        .hara-texto h2 {
+            width: 220px;
+        }
+    }
+
+    .app {
+        padding: 60px 60px;
+        color:beige;
+    }
+
+    .app-contenido {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 60px;
+        transform: translateY(30px);
+    }
+
+    .app-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+        transform: translateX(-30px);
+        animation-delay: 0.3s;
+    }
+
+    .app-img {
+        width: 260px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+</style>
+<body>
+
+    <div class="linea"></div>
+
+    <section class="portada">
+        <p class="top-text">Diseño Grafico</p>
+        <h1>PORTA<br>FOLIO</h1>
+        <p class="bottom-text">Martina Ramos</p>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="perfil container">
+        <img src="foto perfil.jpeg" class="foto"> 
+        <p>¡Hola! Me llamo Martina Ramos, estudiante de la carrera de diseño gráfico, especialidad en multimedia en la UNIACC, actualmente cursando mi segundo año de la carrera. Tengo 20 años, mis fuertes son el dibujo ilustrativo y desde pequeña me gustó todo lo que fuera diseño y manualidades así que cuando crecí tuve claro que iba a estudiar diseño gráfico.</p>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="triple container">
+        <div class="col">
+            <h2>Contacto</h2>
+            <p>Martina.Ramos@uniacc.edu</p>
+            <p>Martina.Ramos</p>
+            <p>Morita9990</p>
+        </div>
+
+        <div class="col">
+            <h2>Software</h2>
+            <div class="software item">
+                <p>Adobe Illustrator</p>
+                <div class=dots>
+                <div class="dot fill"></div>
+                <div class="dot fill"></div>
+                <div class="dot fill"></div>
+                <div class="dot fill"></div>
+                <div class="dot fill"></div>
+                <div class="dot"></div>
+                </div>
+            </div>
+        
+
+          <div class="software item">
+            <p>Adode Photoshop</p>
+            <div class="dots">
+                <div class="dot fill"></div>
+                <div class="dot fill"></div>
+                <div class="dot fill"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+          </div>
+
+          <div class="software item">
+            <p>Adode Indesign</p>
+            <div class="dots">
+            <div class="dot fill"></div>
+            <div class="dot fill"></div>
+            <div class="dot fill"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+            <h2>Cualidades</h2>
+            <p>Ser perfecionesta,<br>puntual y creativa.</p>
+        </div>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="portada">
+        <h1>Contenido</h1>
+    </section>
+
+    <section class="contenidos">
+
+        <div class="item">
+           <h1>1</h1>
+           <h2>Diseño Editorial</h2>
+        </div>
+        
+        <div class="item">
+            <h1>2</h1>
+            <h2>Ilustraciones</h2>
+        </div>
+        
+        <div class="item">
+            <h1>3</h1>
+            <h2>usuarios</h2>
+        </div>
+        
+        <div class="item">
+            <h1>4</h1>
+            <h2>posters</h2>
+        </div>
+        
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="portada">
+        <h1>Diseño<br>Editorial</h1>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="maark-section">
+        <div class="maark-container">
+
+            <div class="maark-imagen">
+                <img src="maark01.png">
+                <img src="maark02.png" class="vertical-img">
+            </div>
+
+            <div class="maark-texto"> 
+                <h2>Maark</h2>
+                <h3>Creación tipográfica</h3>
+                <p>Proyecto Universitario que consistía en la creación de una tipográfia desde cero y presentarla a traves de un "manual tipográfico" mostrando el uso de esta y sus características.</p>
+                <div class="maark-icono">
+                    <span>Ai</span>
+                    <span>Id</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="chisme">
+        <div class="chisme-container">
+
+            <div class="chisme-imagen">
+                <img src="thai.png" class="vertical-img">
+            </div>
+
+            <div class="chisme-texto"> 
+                <h2>Chisme Thai</h2>
+                <h3>Diario</h3>
+                <p>Trabajo que consistía en replicar la diagramación de un diario.</p>
+                <div class="chisme-icono">
+                    <span>Ai</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="portada">
+        <h1>Ilustraciones</h1>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="cuento">
+        <div class="cuento-container">
+
+            <div class="cuento-imagen">
+                <img src="ilustracion 2.jpg" class="vertical-img">
+            </div>
+
+            <div class="cuento-texto"> 
+                <h2>Donde viven los <br>montruos</h2>
+                <h3>Cuento infantil</h3>
+                <p>Proyecto Universitario en el que se debía reinterpretar una página del cuento "Donde viven los monstruos" de Maurice Sendak con nuestro estilo ilustrativo.</p>
+                <div class="cuento-icono">
+                    <span>Ai</span>
+                </div>
+            </div>
+        </div>
+    </section>   
+    
+    <div class="linea"></div>
+
+    <section class="portada">
+        <h1>Usuarios</h1>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="dream">
+        <div class="dream-container">
+            <div class="dream-imagenes">
+                <img src="tablero.png" class="img-grande">
+                <div class="img-fila">
+                    <img class="billetes" src="billete 01.png">
+                    <img class="billetes" src="billete 02.png">
+                    <img src="tarjeta .png">
+                    <img src="pregunta.png">
+                </div>
+            </div>
+            <div class="dream-texto">
+                <h2>Dream Thai</h2>
+                <h3>Juego de mesa</h3>
+                <p>Proyecto Universitario en el que elegimos un usuario y a base de este, se tenía que crear un juego inspirado en otros que ya existen. Dream Thai esta inspirado en "Preguntados" y en el "Monopolis", que trata sobre la cultura tailandesa. </p>
+
+                <span class="dream-icono">Ai</span>
+            </div>
+            
+        </div>
+    </section>
+
+    <div class="linea"></div>
+    
+    <section class="hara">
+        <div class="hara-container">
+
+            <div class="hara-imagen">
+                <img src="hara logo.png" >
+            </div>
+
+            <div class="hara-texto"> 
+                <h2>Hara</h2>
+                <h3>Marca</h3>
+                <p>Proyecto en el que se me asigno un usuario. Tenía que investigar el problema de la marca y crear una solución a este atrves de una app o pagina web</p>
+                <div class="hara-icono">
+                    <span>Ai</span>
+                    <span>Ps</span>
+                </div>
+            </div>
+        </div>
+    </section> 
+    
+    <section class="app">
+        <div class="app-contenido">
+            <img src="app01.png" class="app-img"> 
+            <img src="app02.png" class="app-img"> 
+            <img src="app03.png" class="app-img"> 
+            <img src="app04.png" class="app-img"> 
+        </div>
+
+        <div class="hara-texto">
+            <h2>Hara</h2>
+            <h3>Identidad visual</h3>
+            <p>Proyecto de branding diseñado para transmitir serenidad, armonía y una estética limpia basada en formas orgánicas y tonos naturales.</p>
+        </div>
+
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="cuento">
+         <div class="cuento-container">
+
+            <div class="cuento-imagen">
+                <img src="morita.png" class="vertical-img">
+            </div>
+
+            <div class="cuento-texto"> 
+                <h2>Morita</h2>
+                <h3>Ex-libris</h3>
+                <p>Teniamos que hacer una introspección y descubrir una frase/imagen que me representara y de ahi nacio "Morita"...</p>
+                <div class="cuento-icono">
+                    <span>Ai</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="portada">
+        <h1>Posters</h1>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="cuento">
+         <div class="cuento-container">
+
+            <div class="cuento-imagen">
+                <img src="Martina_Ramos_Afiche.jpg" class="vertical-img">
+            </div>
+
+            <div class="cuento-texto"> 
+                <h2>Funko pop</h2>
+                <h3>Afiche publicitario</h3>
+                <p>Crear un afiche que promocionara un producto, creando una frese y tomar las mejores fotografías para utilizarlas.</p>
+                <div class="cuento-icono">
+                    <span>Ps</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="linea"></div>
+
+    <section class="maark-section">
+        <div class="maark-container">
+
+            <div class="maark-imagen">
+                <img src="entrada.png">
+                <img src="poster.png" class="vertical-img">
+            </div>
+
+            <div class="maark-texto"> 
+                <h2>TxT</h2>
+                <h3>Poster de concierto</h3>
+                <p>Diséño de un poster publicitario más la entrada para el concierto de la banda de k-pop en el movistar arena.</p>
+                <div class="maark-icono">
+                    <span>Ai</span>
+                </div>
+            </div>
+        </div>
+
+    <div class="linea"></div>
+
+    <section class="portada">
+        <h1>Seguiremos creando <br>nuevos proyectos</h1>
+        <h2>nos vemoso el 2026</h2>
+    </section>
+
+    <div class="linea"></div>
+</body>
+</html>
